@@ -7,22 +7,21 @@ use App\Infrastracture\Database\DBAL\Api\DataProviderInterface;
 
 class EntityManager implements Api\EntityManagerInterface
 {
-
     public function __construct(
         private DataProviderInterface $dataProvider,
-        private DataMapperInterface $dataMapper
-    )
-    {
+        private DataMapperInterface $dataMapper,
+        private array $persistContext = []
+    ) {
     }
 
     public function persist($object): void
     {
-        // TODO: Implement persist() method.
+        $this->persistContext[]=$this->dataMapper->fromObject($object);
     }
 
     public function flush(): void
     {
-        // TODO: Implement flush() method.
+        $this->dataProvider->commit($this->persistContext);
     }
 
     public function findAll(): array

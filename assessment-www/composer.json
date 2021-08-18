@@ -7,6 +7,8 @@
         "php": ">=7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "league/flysystem": "^2.2",
+        "league/flysystem-bundle": "^2.0",
         "stichoza/google-translate-php": "^4.1",
         "symfony/console": "5.3.*",
         "symfony/dotenv": "5.3.*",

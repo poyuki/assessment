@@ -58,8 +58,23 @@ class JsonDataMapper implements DataMapperInterface
         return array_map(fn($listElement) => $this->toEntity($listElement), $list);
     }
 
+    /**
+     * @param Question $object
+     * @return array
+     */
     public function fromObject($object): array
     {
-        return [];
+        $result = [
+            'text' => $object->getText(),
+            'createdAt' => $object->getCreatedAt()->format(DATE_RFC3339),
+            'choices' => [],
+        ];
+
+        /** @var Choice $choice */
+        foreach ($object->getChoices() as $choice) {
+            $result['choices'][] = ['text' => $choice->getText()];
+        }
+
+        return $result;
     }
 }
