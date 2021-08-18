@@ -6,8 +6,8 @@ namespace App\Application\Questions;
 
 use App\Application\Questions\Api\QuestionsServiceInterface;
 use App\Domain\Spi\QuestionRepositoryInterface;
-use App\Infrastracture\DataTransformer\QuestionListDataTransformer;
-use App\Infrastracture\Translation\Api\TranslatorInterface;
+use App\Infrastructure\DataTransformer\QuestionListDataTransformer;
+use App\Infrastructure\Translation\Api\TranslatorInterface;
 
 class QuestionsService implements QuestionsServiceInterface
 {

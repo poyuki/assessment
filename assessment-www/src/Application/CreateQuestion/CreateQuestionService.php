@@ -7,7 +7,7 @@ namespace App\Application\CreateQuestion;
 use App\Application\CreateQuestion\Dto\CreateQuestionDto;
 use App\Domain\Api\QuestionFactoryInterface;
 use App\Domain\Spi\QuestionRepositoryInterface;
-use App\Infrastracture\DataTransformer\QuestionTransformer;
+use App\Infrastructure\DataTransformer\QuestionTransformer;
 
 class CreateQuestionService implements Api\CreateQuestionServiceInterface
 {

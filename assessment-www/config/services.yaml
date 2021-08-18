@@ -11,6 +11,8 @@ parameters:
     json_database_file: 'questions.json'
     required_choices_count: 3
 
+    db_type: !php/const App\Infrastructure\Database\DBAL\EntityManagerFactory::CSV_DB
+
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -27,9 +29,13 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
-    App\Infrastracture\EventListener\JsonExceptionConverter:
+    App\Infrastructure\EventListener\JsonExceptionConverter:
         tags:
             - { name: 'kernel.event_listener', event: 'kernel.exception' }
+
+    App\Infrastructure\Database\DBAL\Api\EntityManagerInterface:
+        class: App\Infrastructure\Database\DBAL\EntityManager
+        factory: ['@App\Infrastructure\Database\DBAL\EntityManagerFactory','create']
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

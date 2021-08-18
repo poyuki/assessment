@@ -7,6 +7,7 @@
         "php": ">=7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "league/csv": "^9.7",
         "league/flysystem": "^2.2",
         "league/flysystem-bundle": "^2.0",
         "stichoza/google-translate-php": "^4.1",
