@@ -9,10 +9,10 @@ use App\Infrastructure\DataTransformer\Api\TransformerInterface;
 use App\Infrastructure\Translation\Api\Translatable;
 use App\Infrastructure\Translation\TranslateTrait;
 
-
 class ChoiceTransformer implements TransformerInterface, Translatable
 {
     use TranslateTrait;
+
     /**
      * @param Choice $object
      * @return array

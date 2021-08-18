@@ -21,10 +21,10 @@ class CreateQuestionController extends AbstractController
     private Request $request;
 
     public function __construct(
-        RequestStack                           $requestStack,
+        RequestStack $requestStack,
         private CreateQuestionServiceInterface $createQuestionService,
-        private ValidatorInterface             $createQuestionValidator,
-        private CreateQuestionDtoFactory       $createQuestionDtoFactory
+        private ValidatorInterface $createQuestionValidator,
+        private CreateQuestionDtoFactory $createQuestionDtoFactory
     ) {
         $this->request = $requestStack->getMainRequest() ?? throw new RuntimeException();
     }
@@ -37,5 +37,4 @@ class CreateQuestionController extends AbstractController
 
         return new JsonResponse($result);
     }
-
 }

@@ -19,10 +19,9 @@ class CreateQuestionValidator implements Api\ValidatorInterface
     public function __construct(
         ParameterBagInterface $parameterBag,
         private array $validationErrors = []
-    )
-    {
+    ) {
         $this->pa = PropertyAccess::createPropertyAccessor();
-        $this->requiredChoicesCount=$parameterBag->get('required_choices_count');
+        $this->requiredChoicesCount = $parameterBag->get('required_choices_count');
     }
 
     /**
@@ -31,22 +30,22 @@ class CreateQuestionValidator implements Api\ValidatorInterface
     public function validate(array $dataForValidation): array
     {
         $inputData = [
-            'text'=>$this->pa->getValue($dataForValidation, '[text]'),
-            'choices'=>$this->pa->getValue($dataForValidation, '[choices]')
+            'text' => $this->pa->getValue($dataForValidation, '[text]'),
+            'choices' => $this->pa->getValue($dataForValidation, '[choices]')
         ];
 
         if ($inputData['text'] === null) {
             $this->validationErrors[] = new ValidationError('text', 'required field missed');
         }
 
-        if(!is_string($inputData['text'])){
+        if (!is_string($inputData['text'])) {
             $this->validationErrors[] = new ValidationError('text', 'unexpected type');
         }
 
-        if(!is_array($inputData['choices'])){
+        if (!is_array($inputData['choices'])) {
             $this->validationErrors[] = new ValidationError('choices', 'unexpected type');
         }
-        if(is_array($inputData['choices'])&&count($inputData['choices'])!==$this->requiredChoicesCount){
+        if (is_array($inputData['choices']) && count($inputData['choices']) !== $this->requiredChoicesCount) {
             $this->validationErrors[] = new ValidationError('choices', 'wrong choices count');
         }
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Database\DBAL\Api;
 
 use App\Infrastructure\Database\DBAL\Exception\DatabaseAccessException;
@@ -16,5 +18,5 @@ interface DataProviderInterface
      * @param array $contextToCommit
      * @throws \App\Infrastructure\Database\DBAL\Exception\DatabaseAccessException
      */
-    public function commit(array $contextToCommit):void;
+    public function commit(array $contextToCommit): void;
 }

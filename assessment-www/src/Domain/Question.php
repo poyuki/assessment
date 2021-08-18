@@ -11,11 +11,10 @@ use DateTime;
 class Question
 {
     public function __construct(
-        private string   $text,
+        private string $text,
         private DateTime $createdAt,
-        private array    $choices = []
-    )
-    {
+        private array $choices = []
+    ) {
     }
 
     /**
@@ -46,5 +45,4 @@ class Question
     {
         $this->choices[] = $choice;
     }
-
 }

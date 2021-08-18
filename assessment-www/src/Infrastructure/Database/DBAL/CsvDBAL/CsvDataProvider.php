@@ -26,10 +26,9 @@ class CsvDataProvider implements DataProviderInterface
     {
         $reader = Reader::createFromPath($this->dbFilePath);
         $reader->setHeaderOffset(0);
-        $recordIterator= $reader->getRecords();
+        $recordIterator = $reader->getRecords();
 
         return array_values(iterator_to_array($recordIterator));
-
     }
 
     /**
@@ -37,7 +36,7 @@ class CsvDataProvider implements DataProviderInterface
      */
     public function commit(array $contextToCommit): void
     {
-        $writer = Writer::createFromPath($this->dbFilePath,'a');
+        $writer = Writer::createFromPath($this->dbFilePath, 'a');
         $writer->insertAll($contextToCommit);
     }
 }

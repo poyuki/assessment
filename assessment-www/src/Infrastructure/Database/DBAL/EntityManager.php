@@ -14,7 +14,7 @@ class EntityManager implements Api\EntityManagerInterface
 
     public function __construct(
         private DataProviderInterface $dataProvider,
-        private DataMapperInterface   $dataMapper
+        private DataMapperInterface $dataMapper
     ) {
     }
 

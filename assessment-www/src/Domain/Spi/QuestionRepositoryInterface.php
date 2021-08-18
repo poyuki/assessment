@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domain\Spi;
 
 use App\Domain\Exception\PersistenceException;
@@ -17,5 +19,4 @@ interface QuestionRepositoryInterface
      * @return array<Question>
      */
     public function getList(): array;
-
 }

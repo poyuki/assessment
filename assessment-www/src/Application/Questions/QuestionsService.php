@@ -14,7 +14,7 @@ class QuestionsService implements QuestionsServiceInterface
     public function __construct(
         private QuestionRepositoryInterface $questionRepository,
         private QuestionListDataTransformer $questionListDataTransformer,
-        private TranslatorInterface         $translator
+        private TranslatorInterface $translator
     ) {
     }
 

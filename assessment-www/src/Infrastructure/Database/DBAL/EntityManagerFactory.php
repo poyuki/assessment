@@ -21,7 +21,7 @@ class EntityManagerFactory implements EntityManagerFactoryInterface
 
     public function __construct(
         private ParameterBagInterface $parameterBag,
-        private FilesystemOperator    $databaseStorage
+        private FilesystemOperator $databaseStorage
     ) {
         $this->dbType = $parameterBag->get('db_type');
     }

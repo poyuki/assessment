@@ -12,7 +12,7 @@ use App\Infrastructure\DataTransformer\QuestionTransformer;
 class CreateQuestionService implements Api\CreateQuestionServiceInterface
 {
     public function __construct(
-        private QuestionFactoryInterface    $questionFactory,
+        private QuestionFactoryInterface $questionFactory,
         private QuestionRepositoryInterface $questionRepository,
         private QuestionTransformer $questionTransformer
     ) {

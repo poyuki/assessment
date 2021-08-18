@@ -1,4 +1,7 @@
 {
+    "dealerdirect/phpcodesniffer-composer-installer": {
+        "version": "v0.7.1"
+    },
     "guzzlehttp/guzzle": {
         "version": "7.3.0"
     },
@@ -33,6 +36,9 @@
     "monolog/monolog": {
         "version": "2.3.2"
     },
+    "phpstan/phpdoc-parser": {
+        "version": "0.5.5"
+    },
     "psr/cache": {
         "version": "2.0.0"
     },
@@ -59,6 +65,21 @@
     },
     "roave/security-advisories": {
         "version": "dev-latest"
+    },
+    "slevomat/coding-standard": {
+        "version": "7.0.13"
+    },
+    "squizlabs/php_codesniffer": {
+        "version": "3.6",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.6",
+            "ref": "1019e5c08d4821cb9b77f4891f8e9c31ff20ac6f"
+        },
+        "files": [
+            "phpcs.xml.dist"
+        ]
     },
     "stichoza/google-translate-php": {
         "version": "v4.1.5"
