@@ -1,0 +1,4 @@
+GET /questions?lang=en
+Host: assessment.loc:81
+Accept: application/json
+Content-Type: application/json

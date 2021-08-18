@@ -1,0 +1,8 @@
+questions:
+  path: /questions
+  controller: App\Infrastracture\Http\QuestionsController
+  methods: GET
+create-questions:
+  path: /questions
+  controller: App\Infrastracture\Http\CreateQuestionController
+  methods: POST
