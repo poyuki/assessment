@@ -7,6 +7,10 @@ parameters:
     csv_database_path: '%kernel.project_dir%/database/questions.csv'
     json_database_path: '%kernel.project_dir%/database/questions.json'
 
+    csv_database_file: 'questions.csv'
+    json_database_file: 'questions.json'
+    required_choices_count: 3
+
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -22,6 +26,10 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
             - '../src/Tests/'
+
+    App\Infrastracture\EventListener\JsonExceptionConverter:
+        tags:
+            - { name: 'kernel.event_listener', event: 'kernel.exception' }
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

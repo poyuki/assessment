@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Domain;
 
 use App\Domain\Entity\Choice;
+use App\Domain\Spi\TranslatorInterface;
 use DateTime;
 
 class Question
@@ -13,7 +14,8 @@ class Question
         private string   $text,
         private DateTime $createdAt,
         private array    $choices = []
-    ) {
+    )
+    {
     }
 
     /**
@@ -40,7 +42,9 @@ class Question
         return $this->choices;
     }
 
-    public function attachChoice(Choice $choice):void{
-        $this->choices[]=$choice;
+    public function attachChoice(Choice $choice): void
+    {
+        $this->choices[] = $choice;
     }
+
 }

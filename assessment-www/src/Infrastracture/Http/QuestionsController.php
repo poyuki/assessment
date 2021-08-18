@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastracture\Http;
 
-use App\Application\Query\Questions\Api\QuestionsServiceInterface;
+use App\Application\Questions\Api\QuestionsServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

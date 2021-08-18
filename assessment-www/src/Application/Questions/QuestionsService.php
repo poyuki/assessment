@@ -2,26 +2,28 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Query\Questions;
+namespace App\Application\Questions;
 
-use App\Application\Query\Questions\Api\QuestionsServiceInterface;
+use App\Application\Questions\Api\QuestionsServiceInterface;
 use App\Domain\Spi\QuestionRepositoryInterface;
 use App\Infrastracture\DataTransformer\QuestionListDataTransformer;
-use Psr\Log\LoggerInterface;
+use App\Infrastracture\Translation\Api\TranslatorInterface;
 
 class QuestionsService implements QuestionsServiceInterface
 {
-
     public function __construct(
-        private LoggerInterface $logger,
         private QuestionRepositoryInterface $questionRepository,
-        private QuestionListDataTransformer $questionListDataTransformer
+        private QuestionListDataTransformer $questionListDataTransformer,
+        private TranslatorInterface         $translator
     ) {
     }
 
     public function execute(string $lang): array
     {
         $questions = $this->questionRepository->getList();
+
+        $this->translator->setTargetLang($lang);
+        $this->questionListDataTransformer->setTranslator($this->translator);
 
         return $this->questionListDataTransformer->transformToArray($questions);
     }

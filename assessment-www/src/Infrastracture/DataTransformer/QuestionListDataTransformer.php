@@ -6,11 +6,15 @@ namespace App\Infrastracture\DataTransformer;
 
 use App\Domain\Question;
 use App\Infrastracture\DataTransformer\Api\TransformerInterface;
+use App\Infrastracture\Translation\Api\Translatable;
+use App\Infrastracture\Translation\TranslateTrait;
 
-class QuestionListDataTransformer implements TransformerInterface
+class QuestionListDataTransformer implements TransformerInterface, Translatable
 {
+    use TranslateTrait;
+
     /**
-     * @var \App\Infrastracture\DataTransformer\Api\TransformerInterface
+     * @var TransformerInterface
      */
     private TransformerInterface $questionTransformer;
 
@@ -25,9 +29,15 @@ class QuestionListDataTransformer implements TransformerInterface
      */
     public function transformToArray($questionList): array
     {
-        return array_map(
-            fn(Question $question)=>$this->questionTransformer->transformToArray($question),
-            $questionList
-        );
+        if ($this->questionTransformer instanceof Translatable && $this->getTranslator() !== null) {
+            $this->questionTransformer->setTranslator($this->getTranslator());
+        }
+
+        return [
+            'data' => array_map(
+                fn(Question $question) => $this->questionTransformer->transformToArray($question),
+                $questionList
+            )
+        ];
     }
 }
