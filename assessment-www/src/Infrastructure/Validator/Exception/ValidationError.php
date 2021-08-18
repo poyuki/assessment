@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Validator\Exception;
 
 class ValidationError implements \JsonSerializable

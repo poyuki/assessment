@@ -1,23 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Database\DBAL\CsvDBAL;
 
 use App\Infrastructure\Database\DBAL\Api\DataProviderInterface;
-use App\Infrastructure\Database\DBAL\Exception\DatabaseAccessException;
 use League\Csv\Reader;
 use League\Csv\Writer;
-use League\Flysystem\FilesystemOperator;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class CsvDataProvider implements DataProviderInterface
 {
-    private string $dbFile;
+    private string $dbFilePath;
 
     public function __construct(
-        private FilesystemOperator $databaseStorage,
         ParameterBagInterface $parameterBag
     ) {
-        $this->dbFile = $parameterBag->get('csv_database_file');
+        $this->dbFilePath = $parameterBag->get('csv_database_path');
     }
 
     /**
@@ -25,7 +24,7 @@ class CsvDataProvider implements DataProviderInterface
      */
     public function getList(): array
     {
-        $reader = Reader::createFromStream($this->databaseStorage->readStream($this->dbFile));
+        $reader = Reader::createFromPath($this->dbFilePath);
         $reader->setHeaderOffset(0);
         $recordIterator= $reader->getRecords();
 
@@ -38,7 +37,7 @@ class CsvDataProvider implements DataProviderInterface
      */
     public function commit(array $contextToCommit): void
     {
-        $writer = Writer::createFromStream($this->databaseStorage->readStream($this->dbFile));
+        $writer = Writer::createFromPath($this->dbFilePath,'a');
         $writer->insertAll($contextToCommit);
     }
 }

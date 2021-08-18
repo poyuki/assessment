@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Database\DBAL;
 
 use App\Infrastructure\Database\DBAL\Api\EntityManagerFactoryInterface;
@@ -30,7 +32,7 @@ class EntityManagerFactory implements EntityManagerFactoryInterface
             $dataProvider = new JsonDataProvider($this->databaseStorage, $this->parameterBag);
             $dataMapper = new JsonDataMapper();
         } elseif ($this->dbType === self::CSV_DB) {
-            $dataProvider = new CsvDataProvider($this->databaseStorage, $this->parameterBag);
+            $dataProvider = new CsvDataProvider($this->parameterBag);
             $dataMapper = new CsvDataMapper();
         } else {
             throw new \RuntimeException('unsupported db type');

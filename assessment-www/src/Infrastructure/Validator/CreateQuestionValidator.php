@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Validator;
 
 use App\Infrastructure\Validator\Exception\ValidationError;

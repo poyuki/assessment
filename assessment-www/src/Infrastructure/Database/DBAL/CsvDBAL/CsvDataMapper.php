@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Database\DBAL\CsvDBAL;
 
 use App\Domain\Entity\Choice;
@@ -55,16 +57,16 @@ class CsvDataMapper implements DataMapperInterface
     public function fromObject($object): array
     {
         [$choice1, $choice2, $choice3] = $object->getChoices();
-        if (!$choice1 instanceof Choice || !$choice2  instanceof Choice || !$choice3  instanceof Choice) {
+        if (!$choice1 instanceof Choice || !$choice2 instanceof Choice || !$choice3 instanceof Choice) {
             throw new UnsupportedDataMappingException('wrong choice count');
         }
 
         return [
-            'Question text' => $object->getText(),
-            'Created At' => $object->getCreatedAt()->format(DATE_RFC3339),
-            "Choice 1" => $choice1->getText(),
-            "Choice 2" => $choice2->getText(),
-            "Choice 3" => $choice3->getText(),
+            $object->getText(),
+            $object->getCreatedAt()->format(DATE_RFC3339),
+            $choice1->getText(),
+            $choice2->getText(),
+            $choice3->getText(),
         ];
     }
 }

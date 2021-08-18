@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Database\DBAL\JsonDBAL;
 
 use App\Domain\Entity\Choice;
